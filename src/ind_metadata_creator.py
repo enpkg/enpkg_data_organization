@@ -32,13 +32,12 @@ path_to_input_file = os.path.join(
 # Loading the df
 
 df = pd.read_csv(path_to_input_file,
-                       sep=',', encoding='unicode_escape')
+                 sep=',', encoding='unicode_escape')
 
 # First we create a column which will reflect the folders name established previously
 
-df['clean_filename'] = df['filename'].map(lambda x: x.lstrip('20220513_PMA_').rstrip('.mzML'))
-
-
+df['clean_filename'] = df['filename'].map(
+    lambda x: x.lstrip('20220513_PMA_').rstrip('.mzML'))
 
 
 df.columns
@@ -52,7 +51,7 @@ rootdir = pathlib.Path(individual_files_folder_path)
 
 
 individual_folders_path = df.apply(lambda x: rootdir /
-                             str(x['clean_filename']) , axis='columns')
+                                   str(x['clean_filename']), axis='columns')
 
 
 individual_folders_path.drop_duplicates(keep='first', inplace=True)
@@ -62,19 +61,25 @@ individual_folders_path.drop_duplicates(keep='first', inplace=True)
 
 df.columns
 
-# here we add a sample type column 
-df['sample_type'] = np.where(df['filename'].str.contains('Ctrl'), 'blank', 'sample')
+# here we add a sample type column
+df['sample_type'] = np.where(
+    df['filename'].str.contains('Ctrl'), 'blank', 'sample')
 
 # specific columns are kept
-cols_to_keep = ['filename', 'ATTRIBUTE_query_otol_species', 'clean_filename', 'sample_type']
+cols_to_keep = ['filename', 'ATTRIBUTE_query_otol_species',
+                'clean_filename', 'sample_type']
 
 df = df[cols_to_keep]
 
-# and optionally renamed
-df.rename(columns={'clean_filename': 'sample_id', 'ATTRIBUTE_query_otol_species': 'biological_source'}, inplace=True)
+# optionally renamed
+df.rename(columns={'clean_filename': 'sample_id',
+          'ATTRIBUTE_query_otol_species': 'biological_source'}, inplace=True)
 
+# and re-ordered
 
+df = df[['sample_id', 'biological_source', 'sample_type', 'filename']]
 
+# the following for loop will finally create a tsv file with the individual metadata information per folder
 
 for csvfile, data in df.groupby(individual_folders_path):
     try:
@@ -82,9 +87,6 @@ for csvfile, data in df.groupby(individual_folders_path):
         # csvfile.parent.mkdir(parents=True, exist_ok=True)
         filename = data['sample_id'].values[0] + '_metadata.tsv'
         file = pathlib.Path(csvfile, filename)
-        data.to_csv(file , sep='\t', index=False)
+        data.to_csv(file, sep='\t', index=False)
     except OSError:
         continue
-    
-    
-    
