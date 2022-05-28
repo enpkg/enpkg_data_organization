@@ -12,9 +12,9 @@ import shutil
 parser = argparse.ArgumentParser(
     formatter_class=argparse.RawDescriptionHelpFormatter,
     description=textwrap.dedent('''\
-         Organize folder with unaligned feature list files [features spectra file, feature area file and sirius spectra file (optional)] and their aggregated metadata in individual folders
+        Organize folder with unaligned feature list files [features spectra file, feature area file and sirius spectra file (optional)] and their aggregated metadata in individual folders
          --------------------------------
-            You should just enter the path to the directory where files are located, the aggregated metadata filename and the analysis polarity. 
+        You should just enter the path to the directory where files are located, the aggregated metadata filename and the analysis polarity. 
         '''))
 parser.add_argument('--sample_dir_path', required=True,
                     help='The path to the directory where files are located')
@@ -26,11 +26,6 @@ args = parser.parse_args()
 sample_dir_path = os.path.normpath(args.sample_dir_path)
 metadata_filename = args.metadata_filename
 polarity = args.polarity
-
-# test
-sample_dir_path = "C:/Users/gaudrya.FARMA/Desktop/test_export_mzmine"
-metadata_filename = "metadata.tsv"
-polarity = 'pos'
 
 # Loading the df
 os.chdir(sample_dir_path)
@@ -58,12 +53,22 @@ def organize_folder(df_metadata):
         for file in content_list:
             if file.startswith(sample_filename_woext):
                 shutil.move(os.path.join(os.getcwd(), file), subFolder)
+                
+        if len(os.listdir(subFolder)) == 1:
+            print(f'No matched file for sample {sample_id}')
+        elif len(os.listdir(subFolder)) == 2:
+            print(f'1 matched file for sample {sample_id}')
+        elif len(os.listdir(subFolder)) == 3:
+            print(f'2 matched file for sample {sample_id}')
+        elif len(os.listdir(subFolder)) == 4:
+            print(f'3 matched file for sample {sample_id}')
+                
         for file in os.listdir(subFolder):
             if file.endswith('.csv'):
                 os.rename(subFolder + file, subFolder + f'{sample_id}_features_quant_{polarity}.csv')
             elif file.endswith('_sirius.mgf'):
                 os.rename(subFolder + file, subFolder + f'{sample_id}_sirius_{polarity}.mgf')
             elif file.endswith('.mgf'):
-                os.rename(subFolder + file, subFolder + f'{sample_id}_features_ms2_{polarity}.csv')
+                os.rename(subFolder + file, subFolder + f'{sample_id}_features_ms2_{polarity}.mgf')
             
 organize_folder(df_metadata)
