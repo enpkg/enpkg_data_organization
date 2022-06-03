@@ -38,7 +38,7 @@ Once this is done, export all your **unaligned** feature lists using the "Export
 NB: if you have only pos files, no need for sample_filename_neg column (and the opposite if you have only neg files).
 
 - sample_filename_pos: the name of the mzML or mzXML LC-MS file (ex: 211027_AG_ZC012714_pos_20211028181555.mzML)
-- sample_filename_pos: the name of the mzML or mzXML LC-MS file (ex: 211027_AG_ZC012714_neg_20211029132336.mzML)
+- sample_filename_neg: the name of the mzML or mzXML LC-MS file (ex: 211027_AG_ZC012714_neg_20211029132336.mzML)
 - sample_id: the sample ID correspinding to the file (ex: AG_ZC012714)
 - sample_type: one of QC, blank or sample (ex: sample)
 - sample_organism: for samples (not QC and blanks), organism of the sample in binomial nomenclature (ex: Ailanthus altissima)
