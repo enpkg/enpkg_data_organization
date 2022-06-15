@@ -30,7 +30,8 @@ For each ionization mode, proceed as follows:
 
 In MzMine 2, process your files according to the [FBMN workflow](https://ccms-ucsd.github.io/GNPSDocumentation/featurebasedmolecularnetworking-with-mzmine2/) until the "Isotope Grouping" step. At this step, filter the obtained feature lists to keep only features linked to an MS/MS spectrum.
 
-Once this is done, export all your **unaligned** feature lists using the "Export to GNPS" module. Select the targeted folder and as a filename insert empty curly brackets so MzMine will name files according to the feature list names (ex: "path/to/your/data/directory/{}"). Do the same using the "Export to Sirius" module, this time adding a "_sirius" suffix (ex: "path/to/your/data/directory/{}_sirius.mgf").
+Once this is done, export all your **unaligned** feature lists using the "Export to GNPS" module. Select the targeted folder and as a filename insert empty curly brackets so MzMine will name files according to the feature list names (ex: "path/to/your/data/directory/{}"). Do the same using the "Export to Sirius" module, this time adding a "_sirius" suffix (ex: "path/to/your/data/directory/{}_sirius.mgf"). 
+Export pos and neg data in 2 separate folders.
 
 ### 2) .tsv metadata file formatting
 
@@ -55,7 +56,11 @@ Once this is done, lauch the create_architecture.py script to organize your file
 ```console
 python .\src\create_architecture.py --source_path path/to/your/data/directory/ --target_path path/to/your/data/ouptut/  --metadata_filename metadatafilename.tsv --polarity pos
 ```
+If existing, do the same for the other ionization mode (using the same target_path).
 
+```console
+python .\src\create_architecture.py --source_path path/to/your/data/directory/ --target_path path/to/your/data/ouptut/  --metadata_filename metadatafilename.tsv --polarity neg
+```
 For help with the arguments:
 
 ```console
