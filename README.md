@@ -51,11 +51,11 @@ python .\src\create_architecture.py --help
 ```
 data/
 └─── sample_a/
-|     |  sample_a_metadata.tsv
+|     └─── sample_a_metadata.tsv                     # Metadata of sample_a
 |     └─── pos/
-|     |     sample_a_features_quant_pos.csv
-|     |     sample_a_features_ms2_pos.mgf
-|     |     sample_a_sirius_pos.mgf
+|     |     sample_a_features_quant_pos.csv          # Features intensity table in positive mode
+|     |     sample_a_features_ms2_pos.mgf            # Features fragmentations spectra in positive mode
+|     |     sample_a_sirius_pos.mgf                  # Features fragmentations spectra for sirius (with MS1 isotope pattern) in positive mode 
 |     └─── neg/
 |           sample_a_features_quant_neg.csv
 |           sample_a_features_ms2_neg.mgf
