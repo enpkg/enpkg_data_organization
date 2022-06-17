@@ -1,27 +1,6 @@
 # data_organization
 Script to organize unaligned metabolomics sample files for individual processing
 
-## Desired architecture
-
-```
-data/
-└─── sample_a/
-|     |  sample_a_metadata.tsv
-|     └─── pos/
-|     |     sample_a_features_quant_pos.csv
-|     |     sample_a_features_ms2_pos.mgf
-|     |     sample_a_sirius_pos.mgf
-|     └─── neg/
-|           sample_a_features_quant_neg.csv
-|           sample_a_features_ms2_neg.mgf
-|           sample_a_sirius_neg.mgf
-|
-└─── sample_b/
-|
-└─── sample_n/
-```
-NB: In this example both pos and neg ionization mode are present for samples, but to have only one is fine too.
-
 ## Workflow
 
 For each ionization mode, proceed as follows:
@@ -66,4 +45,25 @@ For help with the arguments:
 ```console
 python .\src\create_architecture.py --help
 ```
+
+## Desired architecture
+
+```
+data/
+└─── sample_a/
+|     |  sample_a_metadata.tsv
+|     └─── pos/
+|     |     sample_a_features_quant_pos.csv
+|     |     sample_a_features_ms2_pos.mgf
+|     |     sample_a_sirius_pos.mgf
+|     └─── neg/
+|           sample_a_features_quant_neg.csv
+|           sample_a_features_ms2_neg.mgf
+|           sample_a_sirius_neg.mgf
+|
+└─── sample_b/
+|
+└─── sample_n/
+```
+NB: In this example both pos and neg ionization mode are present for samples, but to have only one is fine too.
 
