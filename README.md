@@ -1,5 +1,7 @@
 # data_organization
-Script to organize unaligned metabolomics sample files for individual processing
+Script to organize unaligned metabolomics sample files for individual processing.  
+
+⚙️ Workflow part of [enpkg_workflow](https://github.com/mandelbrot-project/enpkg_workflow).  
 
 ## Workflow
 
