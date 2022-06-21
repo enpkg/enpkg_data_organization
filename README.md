@@ -1,5 +1,5 @@
 # data_organization
-Script to organize unaligned metabolomics sample files for individual processing.  
+Script to organize unaligned metabolomics sample files for individual processing and (optionally) add MassIVE id to metadata.
 
 ⚙️ Workflow part of [enpkg_workflow](https://github.com/mandelbrot-project/enpkg_workflow).  
 
