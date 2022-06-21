@@ -69,3 +69,12 @@ data/
 ```
 NB: In this example both pos and neg ionization mode are present for samples, but to have only one is fine too.
 
+### 4) Add GNPS MassIVE information (optional)
+
+To enjoy links to [GNPS LCMS dasboard](https://gnps-lcms.ucsd.edu/) and visualization of your MS/MS spectra directly from the knowldege graph, we recommend you to upload you data (.mz(X)ML files and _feature_MS2_pos/neg.mgf) to the [GNPS MassIVE](https://massive.ucsd.edu/ProteoSAFe/static/massive.jsp) repository.  
+
+Once this is done, add the MassIVE ID to the medatadata using the following command:
+
+```console
+python TODO
+```
