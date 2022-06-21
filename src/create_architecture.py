@@ -1,5 +1,3 @@
-# Loading required libs
-
 import pandas as pd
 import numpy as np
 import os
@@ -31,10 +29,6 @@ target_path = os.path.normpath(args.target_path)
 metadata_filename = args.metadata_filename
 polarity = args.polarity
 
-# source_path = os.path.normpath("C:/Users/gaudrya.FARMA/Desktop/bckp/")
-# target_path = os.path.normpath("C:/Users/gaudrya.FARMA/Desktop/test_may22/")
-# metadata_filename = 'metadata.tsv'
-# polarity = 'pos'
 
 # Create target path if does not exist
 if not os.path.isdir(target_path):
