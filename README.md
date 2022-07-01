@@ -66,12 +66,23 @@ data/
 └─── sample_b/
 |
 └─── sample_n/
+|
+└─── for_massive_upload_pos/                         # All *_features_ms2_pos.mgf files ready for upload on MassIVE
+|     └─── sample_a_features_ms2_pos.mgf                     
+|     └─── ...                    
+|     └─── sample_n_features_ms2_pos.mgf
+|
+└─── for_massive_upload_neg/                         # All *_features_ms2_neg.mgf files ready for upload on MassIVE
+      └─── sample_a_features_ms2_neg.mgf                    
+      └─── ...                    
+      └─── sample_n_features_ms2_neg.mgf                    
 ```
 NB: In this example both pos and neg ionization mode are present for samples, but to have only one is fine too.
 
-### 4) Add GNPS MassIVE information (optional)
+### 4) Add GNPS MassIVE information
 
-To enjoy links to [GNPS LCMS dasboard](https://gnps-lcms.ucsd.edu/) and visualization of your MS/MS spectra directly from the knowldege graph, we recommend you to upload you data (.mz(X)ML files and _feature_MS2_pos/neg.mgf) to the [GNPS MassIVE](https://massive.ucsd.edu/ProteoSAFe/static/massive.jsp) repository.  
+To enjoy links to [GNPS LCMS dasboard](https://gnps-lcms.ucsd.edu/) and visualization of your MS/MS spectra directly from the knowldege graph, we recommend you to upload you data (.mz(X)ML files and _feature_MS2_pos/neg.mgf) to the [GNPS MassIVE](https://massive.ucsd.edu/ProteoSAFe/static/massive.jsp) repository. For an easy upload of your features' fragmentation spectra, you can directly upload the content of the *for_massive_upload_{ionization_mode}" folder(s).  
+:warning: The filenames of the .mz(X)ML files you upload on MassIVE have to match the filenames in your metadata file.
 
 Once this is done, add the MassIVE ID to the medatadata using the following command:
 
