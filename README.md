@@ -37,12 +37,12 @@ Finally, place the .tsv metadata file in the folder where you exported your feat
 Once this is done, lauch the create_architecture.py script to organize your files using the following command adapted to your case:
 
 ```console
-python .\src\create_architecture.py --source_path path/to/your/data/directory/ --target_path path/to/your/data/ouptut/  --metadata_filename metadatafilename.tsv --polarity pos
+python .\src\create_architecture.py --source_path path/to/your/data/in/directory/ --target_path path/to/your/data/out/directory/  --metadata_filename metadatafilename.tsv --polarity pos
 ```
 If existing, do the same for the other ionization mode (using the same target_path).
 
 ```console
-python .\src\create_architecture.py --source_path path/to/your/data/directory/ --target_path path/to/your/data/ouptut/  --metadata_filename metadatafilename.tsv --polarity neg
+python .\src\create_architecture.py --source_path path/to/your/data/in/directory/ --target_path path/to/your/data/out/directory/  --metadata_filename metadatafilename.tsv --polarity neg
 ```
 For help with the arguments:
 
@@ -79,7 +79,8 @@ data/
       └─── ...                    
       └─── sample_n_features_ms2_neg.mgf                    
 ```
-NB: In this example both pos and neg ionization mode are present for samples, but to have only one is fine too.
+
+NB: In this example both pos and neg ionization mode are present for samples, but having only one is fine too.
 
 ### 4) Add GNPS MassIVE information
 
