@@ -32,5 +32,7 @@ for sample_directory in samples_dir:
         metadata = pd.read_csv(metadata_file_path, sep='\t')
     except FileNotFoundError:
         continue
+    except NotADirectoryError:
+        continue
     metadata['massive_id'] = massive_id
     metadata.to_csv(metadata_file_path, sep='\t', index=False)
