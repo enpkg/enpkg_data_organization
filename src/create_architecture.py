@@ -92,6 +92,6 @@ def organize_folder(df_metadata):
                 os.rename(file_path, os.path.normpath(subFolder + '/' + f'{sample_id}_sirius_{polarity}.mgf'))
             elif file.endswith('.mgf'):
                 os.rename(file_path, os.path.normpath(subFolder + '/' + f'{sample_id}_features_ms2_{polarity}.mgf'))
-                shutil.copy((subFolder + '/' + f'{sample_id}_features_ms2_{polarity}.mgf'), os.path.join(target_path, f'for_massive_upload_{polarity}'))
+                shutil.copy((subFolder + '/' + f'{sample_id}_features_ms2_{polarity}.mgf'), os.path.join('..', target_path, f'for_massive_upload_{polarity}'))
             
 organize_folder(df_metadata)
