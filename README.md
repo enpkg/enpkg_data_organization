@@ -93,3 +93,9 @@ Once this is done, add the MassIVE ID to the medatadata using the following comm
 ```console
 python .\src\add_massive_id.py --massive_id {massive_id} -p {path/to/your/data/ouptut/}
 ```
+
+### 5) Next step ...
+
+https://github.com/mandelbrot-project/taxo_enhancer
+
+
