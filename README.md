@@ -13,7 +13,7 @@ In MzMine 2, process your files according to the [FBMN workflow](https://ccms-uc
 
 Once this is done, export all your **unaligned** feature lists using the "Export to GNPS" module. Select the targeted folder and as a filename insert empty curly brackets so MzMine will name files according to the feature list names (ex: "path/to/your/data/directory/{}"). Do the same using the "Export to Sirius" module, this time adding a "_sirius" suffix (ex: "path/to/your/data/directory/{}_sirius.mgf"). 
 
-TODO : precise if "merge MSMS" option is to be used or not.
+TODO : precise if "merge MSMS" option is to be used or not (both for FBMN and Sirius exports)
 
 **Export pos and neg data in 2 separate folders.**
 
