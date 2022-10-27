@@ -1,7 +1,7 @@
-# data_organization
+# enpkg_data_organization
 Script to organize unaligned metabolomics sample files for individual processing and (optionally) add MassIVE id to metadata.
 
-⚙️ Workflow part of [enpkg_workflow](https://github.com/mandelbrot-project/enpkg_workflow).  
+⚙️ Workflow part of [enpkg_workflow](https://github.com/enpkg/enpkg_workflow).  
 
 ## Workflow
 
@@ -29,7 +29,7 @@ NB: if you have only pos files, no need for sample_filename_neg column (and the 
 - **organism_species**: for samples (not QC and blanks), species name of the sample in binomial nomenclature (ex: Ailanthus altissima)
 
 You can of course add as many additional columns as you wish (bioactivity, injection date, LC method, ...).
-An example of metadata file can be found [here](https://github.com/mandelbrot-project/data_organization/blob/main/data/metadata.tsv).
+An example of metadata file can be found [here](https://github.com/enpkg/enpkg_data_organization/blob/main/data/metadata.tsv).
 
 Finally, place the .tsv metadata file in the folder where you exported your feature lists files. 
 
@@ -97,6 +97,6 @@ python .\src\add_massive_id.py --massive_id {massive_id} -p {path/to/your/data/o
 
 ### 5) Next step ...
 
-https://github.com/mandelbrot-project/taxo_enhancer
+https://github.com/enpkg/enpkg_taxo_enhancer
 
 
