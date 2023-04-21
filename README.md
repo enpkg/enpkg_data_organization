@@ -94,7 +94,7 @@ To enjoy links to [GNPS LCMS dasboard](https://gnps-lcms.ucsd.edu/) and visualiz
 Once this is done, add the MassIVE ID to the medatadata using the following command:
 
 ```console
-python .\src\add_massive_id.py --massive_id {massive_id} -p {path/to/your/data/ouptut/}
+python .\src\add_massive_id.py --massive_id massive_id -p path/to/your/data/output/
 ```
 
 ### 5) Next step ...
