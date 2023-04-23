@@ -19,7 +19,7 @@ Once this is done, export all your **unaligned** feature lists using the "Export
 
 ### 2) .tsv metadata file formatting
 
-**5 columns are required**: sample_filename_pos, sample_filename_neg, sample_id, sample_type & sample_organism.
+**4 columns are required**: sample_filename_pos (and/or sample_filename_neg), sample_id, sample_type & sample_organism.
 NB: if you have only pos files, no need for sample_filename_neg column (and the opposite if you have only neg files).
 
 - **sample_filename_pos**: the name of the mzML or mzXML LC-MS file (ex: 211027_AG_ZC012714_pos_20211028181555.mzML)
@@ -37,14 +37,15 @@ Finally, place the .tsv metadata file in the folder where you exported your feat
 ### 3) Create architecture!
 
 Once this is done, lauch the create_architecture.py script to organize your files using the following command adapted to your case:
+Note: on Unix system make sure to change \ to / 
 
 ```console
-python .\src\create_architecture.py --source_path {path/to/your/data/in/directory/} --target_path {path/to/your/data/out/directory/}  --metadata_filename {metadatafilename.tsv} --polarity {pos}
+python .\src\create_architecture.py --source_path path/to/your/data/in/directory/ --target_path path/to/your/data/out/directory/  --metadata_filename metadatafilename.tsv --polarity pos
 ```
 If existing, do the same for the other ionization mode (using the same target_path).
 
 ```console
-python .\src\create_architecture.py --source_path {path/to/your/data/in/directory/} --target_path {path/to/your/data/out/directory/}  --metadata_filename {metadatafilename.tsv} --polarity {neg}
+python .\src\create_architecture.py --source_path path/to/your/data/in/directory/ --target_path path/to/your/data/out/directory/  --metadata_filename metadatafilename.tsv --polarity neg
 ```
 For help with the arguments:
 
@@ -93,7 +94,7 @@ To enjoy links to [GNPS LCMS dasboard](https://gnps-lcms.ucsd.edu/) and visualiz
 Once this is done, add the MassIVE ID to the medatadata using the following command:
 
 ```console
-python .\src\add_massive_id.py --massive_id {massive_id} -p {path/to/your/data/ouptut/}
+python .\src\add_massive_id.py --massive_id massive_id -p path/to/your/data/output/
 ```
 
 ### 5) Next step ...

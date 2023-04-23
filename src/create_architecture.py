@@ -23,12 +23,16 @@ parser.add_argument('--metadata_filename', required=True,
                     help='The name of the metadata file to use (it has to be located in sample_dir_path)')
 parser.add_argument('--polarity', required=True,
                     help='The polarity mode of LC-MS/MS analyses')
+parser.add_argument('--update_metadata_only', type=bool, default=False,
+                    help='Whether to update metadata only (default: False)')
+
 
 args = parser.parse_args()
 source_path = os.path.normpath(args.source_path)
 target_path = os.path.normpath(args.target_path)
 metadata_filename = args.metadata_filename
 polarity = args.polarity
+update_metadata_only = args.update_metadata_only
 
 
 # Create target path if does not exist
@@ -45,6 +49,7 @@ content_list = os.listdir(source_path)
 # Function
 
 def organize_folder(df_metadata):
+    print(f'Building the individual directory structure for each sample ...')
     if not os.path.isdir(os.path.join(target_path, f'for_massive_upload_{polarity}')):
         os.makedirs(os.path.join(target_path, f'for_massive_upload_{polarity}'))
     for i,row in df_metadata.iterrows():
@@ -93,5 +98,29 @@ def organize_folder(df_metadata):
             elif file.endswith('.mgf'):
                 os.rename(file_path, os.path.normpath(subFolder + '/' + f'{sample_id}_features_ms2_{polarity}.mgf'))
                 shutil.copy((subFolder + '/' + f'{sample_id}_features_ms2_{polarity}.mgf'), os.path.join('..', target_path, f'for_massive_upload_{polarity}'))
+                
+
+def organize_folder_meta(df_metadata):
+    print(f'Updating individual samples metadata ...')
+    if not os.path.isdir(os.path.join(target_path, f'for_massive_upload_{polarity}')):
+        os.makedirs(os.path.join(target_path, f'for_massive_upload_{polarity}'))
+    for i,row in df_metadata.iterrows():
+        sample_id = row['sample_id']
+        print(f'Updating metadata for sample {sample_id}')
+        if polarity == 'pos':
+            sample_filename = row['sample_filename_pos']
+            sample_filename_woext = sample_filename.rsplit('.', 1)[0]
+        elif polarity == 'neg':
+            sample_filename = row['sample_filename_neg']
+            sample_filename_woext = sample_filename.rsplit('.', 1)[0]
+        else:
+            raise ValueError("Polarity has to be one of [pos, neg]")
+        
+        # create individual metadata file 
+        pd.DataFrame(df_metadata.iloc[i], ).transpose().to_csv(target_path + '/' + sample_id + '/' + sample_id + '_metadata.tsv', sep='\t', index=False)
+        
             
-organize_folder(df_metadata)
+if update_metadata_only == True :
+    organize_folder_meta(df_metadata)
+else :
+    organize_folder(df_metadata)
