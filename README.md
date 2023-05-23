@@ -26,8 +26,8 @@ NB: if you have only pos files, no need for sample_filename_neg column (and the 
 - **sample_filename_neg**: the name of the mzML or mzXML LC-MS file (ex: 211027_AG_ZC012714_neg_20211029132336.mzML)
 - **sample_id**: the sample ID corresponding to the file (ex: AG_ZC012714)
 - **sample_type**: one of QC, blank or sample (ex: sample)
-- **sample_substance_name**: the ID of the biological material used to prepare the sample. For example, the ID of the raw plant material used to generate the extract.
-- **organism_species**: for samples (not QC and blanks), species name of the sample_substance_name in binomial nomenclature (ex: Ailanthus altissima)
+- **source_id**: the ID of the biological material used to prepare the sample. For example, the ID of the raw plant material used to generate the extract.
+- **source_taxon**: for samples (not QC and blanks), the taxon name of the source_id (ex: Ailanthus or Ailanthus altissima).
 
 You can of course add as many additional columns as you wish (bioactivity, injection date, LC method, ...).
 An example of metadata file can be found [here](https://github.com/enpkg/enpkg_data_organization/blob/main/data/metadata.tsv).
