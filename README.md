@@ -15,9 +15,18 @@ In MzMine 2, process your files according to the [FBMN workflow](https://ccms-uc
 Once this is done, export all your **unaligned** feature lists using the "Export to GNPS" module. Select the targeted folder and as a filename insert empty curly brackets so MzMine will name files according to the feature list names (ex: "path/to/your/data/directory/{}"). Do the same using the "Export to Sirius" module, this time adding a "_sirius" suffix (ex: "path/to/your/data/directory/{}_sirius.mgf"). 
 
 
-**Export pos and neg data in 2 separate folders.**
+:warning: **1. Export PI mode and NI mode data in 2 separate folders.**
 
-### 2) .tsv samples' metadata file formatting
+:warning: **2. If some samples were not analyzed using the same LC-MS method, export them in different folders (i.e. one export folder by LC-MS method AND ionization mode).**
+
+### 2) Additional files required
+
+**3 additional files** are required at this step:
+- samples' metadata file (.tsv format)
+- a LC-MS metadata file (any text-based format)
+- a LC-MS processing metadata file (any text-based format)
+
+#### 2.1 .tsv samples' metadata file formatting
 
 **5 columns are required**: sample_filename_pos, sample_filename_neg, sample_id, sample_type & sample_organism.
 NB: if you have only pos files, no need for sample_filename_neg column (and the opposite if you have only neg files).
@@ -32,7 +41,15 @@ NB: if you have only pos files, no need for sample_filename_neg column (and the 
 You can of course add as many additional columns as you wish (bioactivity, injection date, LC method, ...).
 An example of metadata file can be found [here](https://github.com/enpkg/enpkg_data_organization/blob/main/data/metadata.tsv).
 
-Finally, place the .tsv metadata file in the folder where you exported your feature lists files. 
+#### 2.2 LC-MS metadata file
+This file must contain the LC-MS method details. It can be free text saved as .txt file (such as the method section in an article for example), or a more structured file (such as a .yaml file). **Only one requirment: always use the same format when referring to the same LC-MS method!**
+
+#### 2.3 LC-MS processing
+This file must contain the LC-MS processing details (the parameters used in MZmine). As for the LC-MS metadata file, it can be free text saved as .txt file (such as the method section in an article for example), or a more structured file (such as a .yaml file). **Only one requirment: always use the same format when referring to the same LC-MS method!**
+
+**For this file, we recommend you to use the .xml parameters file you can export directly from MZmine.**
+
+**Finally, place the 3 metadata files in the folder where you exported your feature lists files.**
 
 ### 3) Create architecture!
 
