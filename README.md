@@ -48,7 +48,7 @@ This file must contain the LC-MS method details. It can be free text saved as .t
 An example of metadata file can be found [here](https://github.com/enpkg/enpkg_data_organization/blob/main/data/lcms_method_params.txt).
 
 #### 2.3 LC-MS processing
-This file must contain the LC-MS processing details (the parameters used in MZmine). As for the LC-MS metadata file, it can be free text saved as .txt file (such as the method section in an article for example), or a more structured file (such as a .yaml file). **Only one requirment: always use the same format when referring to the same LC-MS method!**
+This file must contain the LC-MS processing details (the parameters used in MZmine). As for the LC-MS metadata file, it can be free text saved as .txt file (such as the method section in an article for example), or a more structured file (such as a .yaml file). **Only one requirment: always use the same format when referring to the same LC-MS processing parameters!**
 
 **For this file, we recommend you to use the .xml parameters file you can export directly from MZmine.**
 
