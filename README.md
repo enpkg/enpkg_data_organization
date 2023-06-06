@@ -108,7 +108,7 @@ NB: In this example both pos and neg ionization mode are present for samples, bu
 
 ### 4) Add GNPS MassIVE information
 
-To enjoy links to [GNPS LCMS dasboard](https://gnps-lcms.ucsd.edu/) and visualization of your MS/MS spectra directly from the knowldege graph, your data (.mz(X)ML files and feature_MS2_pos/neg.mgf) have to be uplaoded to the [GNPS MassIVE] (https://massive.ucsd.edu/ProteoSAFe/static/massive.jsp) repository. For an easy upload of your features' fragmentation spectra, you can directly upload the content of the **for_massive_upload_<ionization_mode>** folder(s). See GNPS documentation for details on the MassIVE upload process https://ccms-ucsd.github.io/GNPSDocumentation/datasets/ 
+To enjoy links to [GNPS LCMS dasboard](https://gnps-lcms.ucsd.edu/) and visualization of your MS/MS spectra directly from the knowldege graph, your data (.mz(X)ML files and feature_MS2_pos/neg.mgf) have to be uplaoded to the [GNPS MassIVE](https://massive.ucsd.edu/ProteoSAFe/static/massive.jsp) repository. For an easy upload of your features' fragmentation spectra, you can directly upload the content of the **for_massive_upload_<ionization_mode>** folder(s). See [GNPS documentation](https://ccms-ucsd.github.io/GNPSDocumentation/datasets/) for details on the MassIVE upload process.
 
 :warning: The filenames of the .mz(X)ML files you upload on MassIVE have to match the filenames in your metadata file.
 
@@ -118,8 +118,6 @@ Once this is done, add the MassIVE ID to the medatadata using the following comm
 python .\src\add_massive_id.py --massive_id {massive_id} -p {path/to/your/data/ouptut/}
 ```
 
-### 5) Next step ...
+### 5) Next step 🚀
 
 https://github.com/enpkg/enpkg_taxo_enhancer
-
-
