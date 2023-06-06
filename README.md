@@ -40,19 +40,19 @@ NB: if you have only pos files, no need for sample_filename_neg column (and the 
 
 You can of course add as many additional columns as you wish (bioactivity, injection date, LC method, ...).
 
-An example of metadata file can be found [here](https://github.com/enpkg/enpkg_data_organization/blob/main/data/metadata.tsv).
+An example of samples' metadata file can be found [here](https://github.com/enpkg/enpkg_data_organization/blob/main/data/metadata.tsv).
 
 #### 2.2 LC-MS metadata file
 This file must contain the LC-MS method details. It can be free text saved as .txt file (such as the method section in an article for example), or a more structured file (such as a .yaml file). **Only one requirment: always use the same format when referring to the same LC-MS method!**
 
-An example of metadata file can be found [here](https://github.com/enpkg/enpkg_data_organization/blob/main/data/lcms_method_params.txt).
+An example of LC-MS metadata file can be found [here](https://github.com/enpkg/enpkg_data_organization/blob/main/data/lcms_method_params.txt).
 
 #### 2.3 LC-MS processing
 This file must contain the LC-MS processing details (the parameters used in MZmine). As for the LC-MS metadata file, it can be free text saved as .txt file (such as the method section in an article for example), or a more structured file (such as a .yaml file). **Only one requirment: always use the same format when referring to the same LC-MS processing parameters!**
 
 **For this file, we recommend you to use the .xml parameters file you can export directly from MZmine.**
 
-An example of metadata file can be found [here](https://github.com/enpkg/enpkg_data_organization/blob/main/data/lcms_processing_params.xml).
+An example of LC-MS processing metadata file can be found [here](https://github.com/enpkg/enpkg_data_organization/blob/main/data/lcms_processing_params.xml).
 
 **Finally, place the 3 metadata files in the folder where you exported your feature lists files.**
 
