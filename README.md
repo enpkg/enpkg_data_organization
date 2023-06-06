@@ -17,7 +17,7 @@ Once this is done, export all your **unaligned** feature lists using the "Export
 
 **Export pos and neg data in 2 separate folders.**
 
-### 2) .tsv metadata file formatting
+### 2) .tsv samples' metadata file formatting
 
 **5 columns are required**: sample_filename_pos, sample_filename_neg, sample_id, sample_type & sample_organism.
 NB: if you have only pos files, no need for sample_filename_neg column (and the opposite if you have only neg files).
