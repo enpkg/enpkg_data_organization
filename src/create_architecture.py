@@ -1,6 +1,4 @@
-from genericpath import isdir
 import pandas as pd
-import numpy as np
 import os
 import argparse
 import textwrap
@@ -19,7 +17,11 @@ parser.add_argument('--source_path', required=True,
                     help='The path to the directory where data files are located')
 parser.add_argument('--target_path', required=True,
                     help='The path to the directory where files will be moved')
-parser.add_argument('--metadata_filename', required=True,
+parser.add_argument('--sample_metadata_filename', required=True,
+                    help='The name of the metadata file to use (it has to be located in sample_dir_path)')
+parser.add_argument('--lcms_method_params_filename', required=True,
+                    help='The name of the metadata file to use (it has to be located in sample_dir_path)')
+parser.add_argument('--lcms_processing_params_filename', required=True,
                     help='The name of the metadata file to use (it has to be located in sample_dir_path)')
 parser.add_argument('--polarity', required=True,
                     help='The polarity mode of LC-MS/MS analyses')
@@ -27,7 +29,9 @@ parser.add_argument('--polarity', required=True,
 args = parser.parse_args()
 source_path = os.path.normpath(args.source_path)
 target_path = os.path.normpath(args.target_path)
-metadata_filename = args.metadata_filename
+metadata_filename = args.sample_metadata_filename
+lcms_method_filename = args.lcms_method_params_filename
+lcms_processing_filename = args.lcms_processing_params_filename
 polarity = args.polarity
 
 
@@ -35,16 +39,18 @@ polarity = args.polarity
 if not os.path.isdir(target_path):
     os.makedirs(target_path)
 
-# Loading the df
+# Loading the metadata
 path_metadata = os.path.join(source_path, metadata_filename)
 df_metadata = pd.read_csv(path_metadata, sep='\t')
+
+path_lcms_method_filename = os.path.join(source_path, lcms_method_filename)
+path_lcms_processing_filename = os.path.join(source_path, lcms_processing_filename)
 
 # List folder content
 content_list = os.listdir(source_path)
 
 # Function
-
-def organize_folder(df_metadata):
+def organize_folder(df_metadata, path_lcms_method_filename, path_lcms_processing_filename):
     if not os.path.isdir(os.path.join(target_path, f'for_massive_upload_{polarity}')):
         os.makedirs(os.path.join(target_path, f'for_massive_upload_{polarity}'))
     for i,row in df_metadata.iterrows():
@@ -64,10 +70,10 @@ def organize_folder(df_metadata):
             os.makedirs(sampleFolder)
         
         # create individual metadata file 
-        pd.DataFrame(df_metadata.iloc[i], ).transpose().to_csv(target_path + '/' + sample_id + '/' + sample_id + '_metadata.tsv', sep='\t', index=False)
+        pd.DataFrame(df_metadata.iloc[i], ).transpose().to_csv(os.path.join(target_path, sample_id, sample_id + '_metadata.tsv'), sep='\t', index=False)
         
         # move and rename sample's files
-        subFolder = os.path.normpath(os.path.join(sampleFolder + '/' + polarity + '/'))
+        subFolder = os.path.normpath(os.path.join(sampleFolder, polarity + '/'))
         if not os.path.isdir(subFolder):
             os.makedirs(subFolder)
         
@@ -86,12 +92,18 @@ def organize_folder(df_metadata):
                 
         for file in os.listdir(subFolder):
             file_path = os.path.normpath(os.path.join(subFolder + '/' + file))
+            destination_path_lcms_method_filename = os.path.join(subFolder, f'{sample_id}_lcms_method_params_{polarity}.csv')
+            destination_path_lcms_processing_filename = os.path.join(subFolder, f'{sample_id}_lcms_processing_params_{polarity}.csv')
+            shutil.copyfile(path_lcms_method_filename, destination_path_lcms_method_filename)
+            shutil.copyfile(path_lcms_processing_filename, destination_path_lcms_processing_filename)
+
             if file.endswith('.csv'):
-                os.rename(file_path, os.path.normpath(subFolder + '/' + f'{sample_id}_features_quant_{polarity}.csv'))
+                os.rename(file_path, os.path.join(subFolder, f'{sample_id}_features_quant_{polarity}.csv'))
             elif file.endswith('_sirius.mgf'):
-                os.rename(file_path, os.path.normpath(subFolder + '/' + f'{sample_id}_sirius_{polarity}.mgf'))
+                os.rename(file_path, os.path.join(subFolder, f'{sample_id}_sirius_{polarity}.mgf'))
             elif file.endswith('.mgf'):
-                os.rename(file_path, os.path.normpath(subFolder + '/' + f'{sample_id}_features_ms2_{polarity}.mgf'))
+                os.rename(file_path, os.path.join(subFolder, f'{sample_id}_features_ms2_{polarity}.mgf'))
                 shutil.copy((subFolder + '/' + f'{sample_id}_features_ms2_{polarity}.mgf'), os.path.join('..', target_path, f'for_massive_upload_{polarity}'))
             
-organize_folder(df_metadata)
+organize_folder(df_metadata=df_metadata, path_lcms_method_filename=path_lcms_method_filename, path_lcms_processing_filename=path_lcms_processing_filename)
+

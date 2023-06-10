@@ -61,12 +61,12 @@ An example of LC-MS processing metadata file can be found [here](https://github.
 Once this is done, lauch the create_architecture.py script to organize your files using the following command adapted to your case:
 
 ```console
-python .\src\create_architecture.py --source_path {path/to/your/data/in/directory/} --target_path {path/to/your/data/out/directory/}  --metadata_filename {metadatafilename.tsv} --polarity {pos}
+python .\src\create_architecture.py --source_path {path/to/your/data/in/directory/} --target_path {path/to/your/data/out/directory/}  --sample_metadata_filename {metadatafilename.tsv} --lcms_method_params_filename {lcms_method_params_filename} --lcms_processing_params_filename {lcms_processing_params_filename} --polarity {pos}
 ```
 If existing, do the same for the other ionization mode (using the same target_path).
 
 ```console
-python .\src\create_architecture.py --source_path {path/to/your/data/in/directory/} --target_path {path/to/your/data/out/directory/}  --metadata_filename {metadatafilename.tsv} --polarity {neg}
+python .\src\create_architecture.py --source_path {path/to/your/data/in/directory/} --target_path {path/to/your/data/out/directory/}  --sample_metadata_filename {metadatafilename.tsv} --lcms_method_params_filename {lcms_method_params_filename} --lcms_processing_params_filename {lcms_processing_params_filename} --polarity {neg}
 ```
 For help with the arguments:
 
