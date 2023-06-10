@@ -92,8 +92,11 @@ def organize_folder(df_metadata, path_lcms_method_filename, path_lcms_processing
                 
         for file in os.listdir(subFolder):
             file_path = os.path.normpath(os.path.join(subFolder + '/' + file))
-            destination_path_lcms_method_filename = os.path.join(subFolder, f'{sample_id}_lcms_method_params_{polarity}.csv')
-            destination_path_lcms_processing_filename = os.path.join(subFolder, f'{sample_id}_lcms_processing_params_{polarity}.csv')
+
+            lcms_method_extension = path_lcms_method_filename.split(".",1)[1]
+            lcms_processing_extension = path_lcms_processing_filename.split(".",1)[1]
+            destination_path_lcms_method_filename = os.path.join(subFolder, f'{sample_id}_lcms_method_params_{polarity}.{lcms_method_extension}')
+            destination_path_lcms_processing_filename = os.path.join(subFolder, f'{sample_id}_lcms_processing_params_{polarity}.{lcms_processing_extension}')
             shutil.copyfile(path_lcms_method_filename, destination_path_lcms_method_filename)
             shutil.copyfile(path_lcms_processing_filename, destination_path_lcms_processing_filename)
 
