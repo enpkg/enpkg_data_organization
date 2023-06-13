@@ -1,6 +1,7 @@
 # enpkg_data_organization
 
 ![release_badge](https://img.shields.io/github/v/release/enpkg/enpkg_data_organization)
+![license](https://img.shields.io/github/license/enpkg/enpkg_data_organization)
 
 Script to organize unaligned metabolomics sample files for individual processing and add MassIVE id to metadata.
 
