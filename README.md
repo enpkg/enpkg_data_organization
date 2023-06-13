@@ -5,7 +5,7 @@
 
 Script to organize unaligned metabolomics sample files for individual processing and add MassIVE id to metadata.
 
-⚙️ Workflow part of [enpkg_workflow](https://github.com/enpkg/enpkg_workflow).  
+⚙️ Module part of [enpkg_workflow](https://github.com/enpkg/enpkg_workflow).  
 
 ## Workflow
 
