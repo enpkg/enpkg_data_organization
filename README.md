@@ -34,12 +34,12 @@ Once this is done, export all your **unaligned** feature lists using the "Export
 **5 columns are required**: sample_filename_pos, sample_filename_neg, sample_id, sample_type & sample_organism.
 NB: if you have only pos files, no need for sample_filename_neg column (and the opposite if you have only neg files).
 
-- **sample_filename_pos**: the name of the mzML or mzXML LC-MS file (ex: 211027_AG_ZC012714_pos_20211028181555.mzML)
-- **sample_filename_neg**: the name of the mzML or mzXML LC-MS file (ex: 211027_AG_ZC012714_neg_20211029132336.mzML)
-- **sample_id**: the sample ID corresponding to the file (ex: AG_ZC012714)
-- **sample_type**: one of QC, blank or sample (ex: sample)
-- **source_id**: the ID of the biological material used to prepare the sample. For example, the ID of the raw plant material used to generate the extract.
-- **source_taxon**: for samples (not QC and blanks), the taxon name of the source_id (ex: Ailanthus or Ailanthus altissima).
+- **`sample_filename_pos`**: the name of the mzML or mzXML LC-MS file (ex: `211027_AG_ZC012714_pos_20211028181555.mzML`).
+- **`sample_filename_neg`**: the name of the mzML or mzXML LC-MS file (ex: `211027_AG_ZC012714_neg_20211029132336.mzML`).
+- **`sample_id`**: the sample ID corresponding to the file (ex: `AG_ZC012714`)
+- **`sample_type`**: one of `QC`, `blank` or `sample`.
+- **`source_id`**: the ID of the biological material used to prepare the sample. For example, the ID of the raw plant material used to generate the extract.
+- **`source_taxon`**: for samples (not QC and blanks), the taxon name of the source_id (ex: `Ailanthus` or `Ailanthus altissima`).
 
 You can of course add as many additional columns as you wish (bioactivity, injection date, LC method, ...).
 
@@ -64,12 +64,14 @@ An example of LC-MS processing metadata file can be found [here](https://github.
 Once this is done, lauch the create_architecture.py script to organize your files using the following command adapted to your case:
 
 ```console
-python .\src\create_architecture.py --source_path {path/to/your/data/in/directory/} --target_path {path/to/your/data/out/directory/}  --sample_metadata_filename {metadatafilename.tsv} --lcms_method_params_filename {lcms_method_params_filename} --lcms_processing_params_filename {lcms_processing_params_filename} --polarity {pos}
+python .\src\create_architecture.py --source_path {path/to/your/data/in/directory/} --target_path {path/to/your/data/out/directory/}  --sample_metadata_filename {metadatafilename.tsv} --lcms_method_params_filename {lcms_method_params_filename}
+--lcms_processing_params_filename {lcms_processing_params_filename} --polarity {pos}
 ```
 If existing, do the same for the other ionization mode (using the same target_path).
 
 ```console
-python .\src\create_architecture.py --source_path {path/to/your/data/in/directory/} --target_path {path/to/your/data/out/directory/}  --sample_metadata_filename {metadatafilename.tsv} --lcms_method_params_filename {lcms_method_params_filename} --lcms_processing_params_filename {lcms_processing_params_filename} --polarity {neg}
+python .\src\create_architecture.py --source_path {path/to/your/data/in/directory/} --target_path {path/to/your/data/out/directory/}  --sample_metadata_filename {metadatafilename.tsv} --lcms_method_params_filename {lcms_method_params_filename}
+--lcms_processing_params_filename {lcms_processing_params_filename} --polarity {neg}
 ```
 For help with the arguments:
 
