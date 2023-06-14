@@ -33,7 +33,9 @@ Once this is done, export all your **unaligned** feature lists using the "Export
 - a LC-MS metadata file (any text-based format)
 - a LC-MS processing metadata file (any text-based format)
 
-#### 2.1 .tsv samples' metadata file formatting
+#### 2.1 Samples' metadata file
+
+You have to include samples' metadata in a **.tsv file.**  
 
 **5 columns are required**: sample_filename_pos, sample_filename_neg, sample_id, sample_type & sample_organism.
 NB: if you have only pos files, no need for sample_filename_neg column (and the opposite if you have only neg files).
@@ -45,23 +47,23 @@ NB: if you have only pos files, no need for sample_filename_neg column (and the 
 - **`source_id`**: the ID of the biological material used to prepare the sample. For example, the ID of the raw plant material used to generate the extract.
 - **`source_taxon`**: for samples (not QC and blanks), the taxon name of the source_id (ex: `Ailanthus` or `Ailanthus altissima`).
 
-You can of course add as many additional columns as you wish (bioactivity, injection date, LC method, ...).
+You can also add as many additional columns as you wish (bioactivity, injection date, LC method, ...). These will be kept in individual metadata files but ignored in the processing.
 
 An example of samples' metadata file can be found [here](https://github.com/enpkg/enpkg_data_organization/blob/main/data/metadata.tsv).
 
-#### 2.2 LC-MS metadata file
+#### 2.2 LC-MS parameters metadata file
 This file must contain the LC-MS method details. It can be free text saved as .txt file (such as the method section in an article for example), or a more structured file (such as a .yaml file). **Only one requirment: always use the same format when referring to the same LC-MS method!**
 
 An example of LC-MS metadata file can be found [here](https://github.com/enpkg/enpkg_data_organization/blob/main/data/lcms_method_params.txt).
 
-#### 2.3 LC-MS processing
+#### 2.3 LC-MS processing parameters metadata file
 This file must contain the LC-MS processing details (the parameters used in MZmine). As for the LC-MS metadata file, it can be free text saved as .txt file (such as the method section in an article for example), or a more structured file (such as a .yaml file). **Only one requirment: always use the same format when referring to the same LC-MS processing parameters!**
 
 **For this file, we recommend you to use the .xml parameters file you can export directly from MZmine.**
 
 An example of LC-MS processing metadata file can be found [here](https://github.com/enpkg/enpkg_data_organization/blob/main/data/lcms_processing_params.xml).
 
-**Finally, place the 3 metadata files in the folder where you exported your feature lists files.**
+▶️ **Finally, place the 3 metadata files in the folder where you exported your feature lists files.**
 
 ### 3) Create architecture!
 
