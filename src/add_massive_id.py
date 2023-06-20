@@ -12,8 +12,10 @@ parser = argparse.ArgumentParser(
         '''))
 
 parser.add_argument('--massive_id', required=True,
-                    help='The MassIVE id (format MSVXXXXXXXXX, ex. MSV000087728) of the repository where .mz(X)ML and features_ms2_pos/neg_.mgf data have been uploaded')
-parser.add_argument('-p', '--sample_dir_path', required=True, help='The path to the directory where samples folders corresponding to the MassIVE id are located')
+                    help='The MassIVE id (format MSVXXXXXXXXX, ex. MSV000087728) of the repository where .mz(X)ML \
+                        and features_ms2_pos/neg_.mgf data have been uploaded')
+parser.add_argument('-p', '--sample_dir_path', required=True, help='The path to the directory where \
+                    samples folders corresponding to the MassIVE id are located')
 
 args = parser.parse_args()
 sample_dir_path = os.path.normpath(args.sample_dir_path)

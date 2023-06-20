@@ -2,15 +2,17 @@ import pandas as pd
 import os
 import argparse
 import textwrap
-import shutil 
+import shutil
 
 """ Argument parser """
 parser = argparse.ArgumentParser(
     formatter_class=argparse.RawDescriptionHelpFormatter,
     description=textwrap.dedent('''\
-        Organize folder with unaligned feature list files [features spectra file, feature area file and sirius spectra file (optional)] and their aggregated metadata in individual folders
+        Organize folder with unaligned feature list files [features spectra file, feature area file \
+            and sirius spectra file (optional)] and their aggregated metadata in individual folders
          --------------------------------
-        You should just enter the path to the directory where files are located, the aggregated metadata filename and the analysis polarity. 
+        You should just enter the path to the directory where files are located, \
+            the aggregated metadata filename and the analysis polarity. 
         '''))
 
 parser.add_argument('--source_path', required=True,
@@ -65,48 +67,48 @@ def organize_folder(df_metadata, path_lcms_method_filename, path_lcms_processing
             raise ValueError("Polarity has to be one of [pos, neg]")
         
         # create sample's folder if if it does not exist yet
-        sampleFolder = os.path.join(target_path, sample_id)
-        if not os.path.isdir(sampleFolder):
-            os.makedirs(sampleFolder)
+        sample_folder = os.path.join(target_path, sample_id)
+        if not os.path.isdir(sample_folder):
+            os.makedirs(sample_folder)
         
         # create individual metadata file 
         pd.DataFrame(df_metadata.iloc[i], ).transpose().to_csv(os.path.join(target_path, sample_id, sample_id + '_metadata.tsv'), sep='\t', index=False)
-        
+
         # move and rename sample's files
-        subFolder = os.path.normpath(os.path.join(sampleFolder, polarity + '/'))
-        if not os.path.isdir(subFolder):
-            os.makedirs(subFolder)
-        
+        sub_folder = os.path.normpath(os.path.join(sample_folder, polarity + '/'))
+        if not os.path.isdir(sub_folder):
+            os.makedirs(sub_folder)
+
         for file in content_list:
             if file.startswith(sample_filename_woext):
-                shutil.copy(os.path.join(source_path, file), subFolder)
-                
-        if len(os.listdir(subFolder)) == 0:
+                shutil.copy(os.path.join(source_path, file), sub_folder)
+
+        if len(os.listdir(sub_folder)) == 0:
             print(f'No matched file for sample {sample_id}')
-        elif len(os.listdir(subFolder)) == 1:
+        elif len(os.listdir(sub_folder)) == 1:
             print(f'1 matched file for sample {sample_id}')
-        elif len(os.listdir(subFolder)) == 2:
+        elif len(os.listdir(sub_folder)) == 2:
             print(f'2 matched file for sample {sample_id}')
-        elif len(os.listdir(subFolder)) == 3:
+        elif len(os.listdir(sub_folder)) == 3:
             print(f'3 matched file for sample {sample_id}')
-                
-        for file in os.listdir(subFolder):
-            file_path = os.path.normpath(os.path.join(subFolder + '/' + file))
+
+        for file in os.listdir(sub_folder):
+            file_path = os.path.normpath(os.path.join(sub_folder + '/' + file))
 
             lcms_method_extension = path_lcms_method_filename.split(".",1)[1]
             lcms_processing_extension = path_lcms_processing_filename.split(".",1)[1]
-            destination_path_lcms_method_filename = os.path.join(subFolder, f'{sample_id}_lcms_method_params_{polarity}.{lcms_method_extension}')
-            destination_path_lcms_processing_filename = os.path.join(subFolder, f'{sample_id}_lcms_processing_params_{polarity}.{lcms_processing_extension}')
+            destination_path_lcms_method_filename = os.path.join(sub_folder, f'{sample_id}_lcms_method_params_{polarity}.{lcms_method_extension}')
+            destination_path_lcms_processing_filename = os.path.join(sub_folder, f'{sample_id}_lcms_processing_params_{polarity}.{lcms_processing_extension}')
             shutil.copyfile(path_lcms_method_filename, destination_path_lcms_method_filename)
             shutil.copyfile(path_lcms_processing_filename, destination_path_lcms_processing_filename)
 
             if file.endswith('.csv'):
-                os.rename(file_path, os.path.join(subFolder, f'{sample_id}_features_quant_{polarity}.csv'))
+                os.rename(file_path, os.path.join(sub_folder, f'{sample_id}_features_quant_{polarity}.csv'))
             elif file.endswith('_sirius.mgf'):
-                os.rename(file_path, os.path.join(subFolder, f'{sample_id}_sirius_{polarity}.mgf'))
+                os.rename(file_path, os.path.join(sub_folder, f'{sample_id}_sirius_{polarity}.mgf'))
             elif file.endswith('.mgf'):
-                os.rename(file_path, os.path.join(subFolder, f'{sample_id}_features_ms2_{polarity}.mgf'))
-                shutil.copy((subFolder + '/' + f'{sample_id}_features_ms2_{polarity}.mgf'), os.path.join('..', target_path, f'for_massive_upload_{polarity}'))
-            
-organize_folder(df_metadata=df_metadata, path_lcms_method_filename=path_lcms_method_filename, path_lcms_processing_filename=path_lcms_processing_filename)
+                os.rename(file_path, os.path.join(sub_folder, f'{sample_id}_features_ms2_{polarity}.mgf'))
+                shutil.copy((sub_folder + '/' + f'{sample_id}_features_ms2_{polarity}.mgf'), os.path.join('..', target_path, f'for_massive_upload_{polarity}'))
 
+organize_folder(df_metadata=df_metadata, path_lcms_method_filename=path_lcms_method_filename,
+                path_lcms_processing_filename=path_lcms_processing_filename)
