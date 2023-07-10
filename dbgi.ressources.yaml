@@ -1,0 +1,312 @@
+name: dbgi_metadata
+type: table
+path: data/dbgi_metadata.tsv
+scheme: file
+format: tsv
+mediatype: text/tsv
+encoding: utf-8
+dialect:
+  csv:
+    delimiter: "\t"
+schema:
+  fields:
+    - name: sample_filename_pos
+      type: string
+    - name: sample_id
+      type: string
+    - name: source_id
+      type: string
+    - name: old_sample_id
+      type: string
+    - name: sample_type
+      type: string
+    - name: organism_species
+      type: string
+    - name: ipen
+      type: string
+    - name: sample_prep_mode
+      type: string
+    - name: WGS84x
+      type: number
+    - name: WGS84y
+      type: number
+    - name: id
+      type: integer
+    - name: quality_grade
+      type: string
+    - name: time_observed_at
+      type: datetime
+    - name: taxon_geoprivacy
+      type: string
+    - name: annotations
+      type: array
+    - name: uuid
+      type: string
+    - name: cached_votes_total
+      type: integer
+    - name: identifications_most_agree
+      type: boolean
+    - name: species_guess
+      type: string
+    - name: identifications_most_disagree
+      type: boolean
+    - name: tags
+      type: array
+    - name: positional_accuracy
+      type: any
+    - name: comments_count
+      type: integer
+    - name: site_id
+      type: integer
+    - name: license_code
+      type: string
+    - name: quality_metrics
+      type: string
+    - name: public_positional_accuracy
+      type: any
+    - name: reviewed_by
+      type: array
+    - name: oauth_application_id
+      type: any
+    - name: flags
+      type: array
+    - name: created_at
+      type: datetime
+    - name: description
+      type: any
+    - name: project_ids_with_curator_id
+      type: array
+    - name: updated_at
+      type: datetime
+    - name: sounds
+      type: array
+    - name: place_ids
+      type: array
+    - name: captive
+      type: boolean
+    - name: ident_taxon_ids
+      type: array
+    - name: outlinks
+      type: array
+    - name: faves_count
+      type: integer
+    - name: ofvs
+      type: string
+    - name: num_identification_agreements
+      type: integer
+    - name: comments
+      type: array
+    - name: map_scale
+      type: any
+    - name: uri
+      type: string
+    - name: project_ids
+      type: array
+    - name: community_taxon_id
+      type: any
+    - name: owners_identification_from_vision
+      type: boolean
+    - name: identifications_count
+      type: integer
+    - name: obscured
+      type: boolean
+    - name: num_identification_disagreements
+      type: integer
+    - name: geoprivacy
+      type: any
+    - name: location
+      type: array
+    - name: votes
+      type: array
+    - name: spam
+      type: boolean
+    - name: mappable
+      type: boolean
+    - name: identifications_some_agree
+      type: boolean
+    - name: project_ids_without_curator_id
+      type: array
+    - name: place_guess
+      type: string
+    - name: identifications
+      type: string
+    - name: project_observations
+      type: array
+    - name: photos
+      type: string
+    - name: faves
+      type: array
+    - name: non_owner_ids
+      type: array
+    - name: observed_on
+      type: datetime
+    - name: photo_url
+      type: string
+    - name: taxon.is_active
+      type: boolean
+    - name: taxon.ancestry
+      type: string
+    - name: taxon.min_species_ancestry
+      type: string
+    - name: taxon.endemic
+      type: boolean
+    - name: taxon.iconic_taxon_id
+      type: integer
+    - name: taxon.min_species_taxon_id
+      type: integer
+    - name: taxon.threatened
+      type: boolean
+    - name: taxon.rank_level
+      type: integer
+    - name: taxon.introduced
+      type: boolean
+    - name: taxon.native
+      type: boolean
+    - name: taxon.parent_id
+      type: integer
+    - name: taxon.name
+      type: string
+    - name: taxon.rank
+      type: string
+    - name: taxon.extinct
+      type: boolean
+    - name: taxon.id
+      type: integer
+    - name: taxon.ancestor_ids
+      type: array
+    - name: taxon.photos_locked
+      type: boolean
+    - name: taxon.taxon_schemes_count
+      type: integer
+    - name: taxon.wikipedia_url
+      type: string
+    - name: taxon.current_synonymous_taxon_ids
+      type: any
+    - name: taxon.created_at
+      type: datetime
+    - name: taxon.taxon_changes_count
+      type: integer
+    - name: taxon.complete_species_count
+      type: any
+    - name: taxon.universal_search_rank
+      type: integer
+    - name: taxon.observations_count
+      type: integer
+    - name: taxon.flag_counts.resolved
+      type: integer
+    - name: taxon.flag_counts.unresolved
+      type: integer
+    - name: taxon.atlas_id
+      type: any
+    - name: taxon.default_photo.id
+      type: number
+    - name: taxon.default_photo.license_code
+      type: string
+    - name: taxon.default_photo.attribution
+      type: string
+    - name: taxon.default_photo.url
+      type: string
+    - name: taxon.default_photo.original_dimensions.height
+      type: number
+    - name: taxon.default_photo.original_dimensions.width
+      type: number
+    - name: taxon.default_photo.flags
+      type: array
+    - name: taxon.default_photo.square_url
+      type: string
+    - name: taxon.default_photo.medium_url
+      type: string
+    - name: taxon.iconic_taxon_name
+      type: string
+    - name: taxon.preferred_common_name
+      type: string
+    - name: preferences.prefers_community_taxon
+      type: any
+    - name: geojson.coordinates
+      type: array
+    - name: geojson.type
+      type: string
+    - name: user.site_id
+      type: number
+    - name: user.created_at
+      type: datetime
+    - name: user.id
+      type: integer
+    - name: user.login
+      type: string
+    - name: user.spam
+      type: boolean
+    - name: user.suspended
+      type: boolean
+    - name: user.login_autocomplete
+      type: string
+    - name: user.login_exact
+      type: string
+    - name: user.name
+      type: any
+    - name: user.name_autocomplete
+      type: any
+    - name: user.orcid
+      type: any
+    - name: user.icon
+      type: any
+    - name: user.observations_count
+      type: integer
+    - name: user.identifications_count
+      type: integer
+    - name: user.journal_posts_count
+      type: integer
+    - name: user.activity_count
+      type: integer
+    - name: user.species_count
+      type: integer
+    - name: user.universal_search_rank
+      type: integer
+    - name: user.roles
+      type: array
+    - name: user.icon_url
+      type: any
+    - name: taxon.default_photo
+      type: any
+    - name: taxon.conservation_status.place_id
+      type: any
+    - name: taxon.conservation_status.source_id
+      type: any
+    - name: taxon.conservation_status.user_id
+      type: any
+    - name: taxon.conservation_status.authority
+      type: any
+    - name: taxon.conservation_status.status
+      type: any
+    - name: taxon.conservation_status.status_name
+      type: any
+    - name: taxon.conservation_status.geoprivacy
+      type: any
+    - name: taxon.conservation_status.iucn
+      type: any
+    - name: observed_on_details
+      type: any
+    - name: created_time_zone
+      type: any
+    - name: observed_time_zone
+      type: any
+    - name: time_zone_offset
+      type: any
+    - name: observed_on_string
+      type: any
+    - name: created_at_details.date
+      type: any
+    - name: created_at_details.week
+      type: any
+    - name: created_at_details.month
+      type: any
+    - name: created_at_details.hour
+      type: any
+    - name: created_at_details.year
+      type: any
+    - name: created_at_details.day
+      type: any
+    - name: swiped_loc
+      type: string
+    - name: emi_external_id
+      type: string

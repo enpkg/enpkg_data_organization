@@ -1,0 +1,11 @@
+{
+  "fields": [
+    {"name": "sample_filename_pos", "type": "string"},
+    {"name": "sample_filename_neg", "type": "string"},
+    {"name": "sample_id", "type": "string"},
+    {"name": "sample_type", "type": "string"},
+    {"name": "source_id", "type": "string"},
+    {"name": "source_taxon", "type": "string"}
+  ],
+  "missingValues": [""]
+}
