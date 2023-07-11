@@ -5,8 +5,17 @@
       "type": "string"
     },
     {
+      "name": "sample_filename_neg",
+      "type": "string"
+    },
+    {
       "name": "sample_id",
       "type": "string"
+    },
+    {
+      "name": "sample_type",
+      "type": "string",
+      "constraints": {"enum": ["QC", "BK", "sample"]}
     },
     {
       "name": "source_id",
@@ -14,10 +23,6 @@
     },
     {
       "name": "old_sample_id",
-      "type": "string"
-    },
-    {
-      "name": "sample_type",
       "type": "string"
     },
     {
