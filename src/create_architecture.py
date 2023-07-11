@@ -17,6 +17,8 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument('--source_path', required=True,
                     help='The path to the directory where data files are located')
+parser.add_argument('--source_metadata_path', required=True,
+                    help='The path to the directory where metadata files are located')
 parser.add_argument('--target_path', required=True,
                     help='The path to the directory where files will be moved')
 parser.add_argument('--sample_metadata_filename', required=True,
@@ -30,6 +32,7 @@ parser.add_argument('--polarity', required=True,
 
 args = parser.parse_args()
 source_path = os.path.normpath(args.source_path)
+source_metadata_path = os.path.normpath(args.source_metadata_path)
 target_path = os.path.normpath(args.target_path)
 metadata_filename = args.sample_metadata_filename
 lcms_method_filename = args.lcms_method_params_filename
@@ -42,11 +45,11 @@ if not os.path.isdir(target_path):
     os.makedirs(target_path)
 
 # Loading the metadata
-path_metadata = os.path.join(source_path, metadata_filename)
+path_metadata = os.path.join(source_metadata_path, metadata_filename)
 df_metadata = pd.read_csv(path_metadata, sep='\t')
 
-path_lcms_method_filename = os.path.join(source_path, lcms_method_filename)
-path_lcms_processing_filename = os.path.join(source_path, lcms_processing_filename)
+path_lcms_method_filename = os.path.join(source_metadata_path, lcms_method_filename)
+path_lcms_processing_filename = os.path.join(source_metadata_path, lcms_processing_filename)
 
 # List folder content
 content_list = os.listdir(source_path)
