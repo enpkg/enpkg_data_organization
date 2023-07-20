@@ -7,55 +7,6 @@ import textwrap
 from userinput.utils import must_be_in_set
 import pandas as pd
 
-parser = argparse.ArgumentParser(
-    formatter_class=argparse.RawDescriptionHelpFormatter,
-    description=textwrap.dedent(
-        """\
-        Organize folder with unaligned feature list files [features spectra file, feature area file \
-            and sirius spectra file (optional)] and their aggregated metadata in individual folders
-        --------------------------------
-        You should just enter the path to the directory where files are located, \
-            the aggregated metadata filename and the analysis polarity. 
-        """
-    ),
-)
-
-parser.add_argument(
-    "--source_path",
-    required=True,
-    help="The path to the directory where data files are located",
-)
-parser.add_argument(
-    "--source_metadata_path",
-    required=True,
-    help="The path to the directory where metadata files are located",
-)
-parser.add_argument(
-    "--target_path",
-    required=True,
-    help="The path to the directory where files will be moved",
-)
-parser.add_argument(
-    "--sample_metadata_filename",
-    required=True,
-    help="The name of the metadata file to use (it has to be located in sample_dir_path)",
-)
-parser.add_argument(
-    "--lcms_method_params_filename",
-    required=True,
-    help="The name of the metadata file to use (it has to be located in sample_dir_path)",
-)
-parser.add_argument(
-    "--lcms_processing_params_filename",
-    required=True,
-    help="The name of the metadata file to use (it has to be located in sample_dir_path)",
-)
-parser.add_argument(
-    "--polarity", required=True, help="The polarity mode of LC-MS/MS analyses"
-)
-
-args = parser.parse_args()
-
 
 def organize_folder(
     source_path: str,
@@ -192,6 +143,55 @@ def organize_folder(
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        description=textwrap.dedent(
+            """\
+            Organize folder with unaligned feature list files [features spectra file, feature area file \
+                and sirius spectra file (optional)] and their aggregated metadata in individual folders
+            --------------------------------
+            You should just enter the path to the directory where files are located, \
+                the aggregated metadata filename and the analysis polarity. 
+            """
+        ),
+    )
+
+    parser.add_argument(
+        "--source_path",
+        required=True,
+        help="The path to the directory where data files are located",
+    )
+    parser.add_argument(
+        "--source_metadata_path",
+        required=True,
+        help="The path to the directory where metadata files are located",
+    )
+    parser.add_argument(
+        "--target_path",
+        required=True,
+        help="The path to the directory where files will be moved",
+    )
+    parser.add_argument(
+        "--sample_metadata_filename",
+        required=True,
+        help="The name of the metadata file to use (it has to be located in sample_dir_path)",
+    )
+    parser.add_argument(
+        "--lcms_method_params_filename",
+        required=True,
+        help="The name of the metadata file to use (it has to be located in sample_dir_path)",
+    )
+    parser.add_argument(
+        "--lcms_processing_params_filename",
+        required=True,
+        help="The name of the metadata file to use (it has to be located in sample_dir_path)",
+    )
+    parser.add_argument(
+        "--polarity", required=True, help="The polarity mode of LC-MS/MS analyses"
+    )
+
+    args = parser.parse_args()
+
     organize_folder(
         source_path=os.path.normpath(args.source_path),
         target_path=os.path.normpath(args.target_path),
