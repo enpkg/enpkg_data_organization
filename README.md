@@ -1,5 +1,4 @@
 # enpkg_data_organization
-
 ![release_badge](https://img.shields.io/github/v/release/enpkg/enpkg_data_organization)
 ![license](https://img.shields.io/github/license/enpkg/enpkg_data_organization)
 
@@ -14,6 +13,13 @@ Script to organize unaligned metabolomics sample files for the ENPKG workflow.
 ## Workflow
 
 For each ionization mode, proceed as follows:
+
+### 0) Requirements
+To install the package requirements, you can run the following command:
+
+```bash
+pip install -r requirements.txt
+```
 
 ### 1) MzMine2 processing
 
