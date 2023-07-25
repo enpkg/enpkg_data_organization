@@ -100,6 +100,7 @@ def organize_folder(
         for file in os.listdir(sub_folder):
             file_path = os.path.normpath(os.path.join(sub_folder + "/" + file))
 
+
             lcms_method_extension = path_lcms_method_filename.split(".", 1)[1]
             lcms_processing_extension = path_lcms_processing_filename.split(".", 1)[1]
             destination_path_lcms_method_filename = os.path.join(
@@ -110,6 +111,9 @@ def organize_folder(
                 sub_folder,
                 f"{sample_id}_lcms_processing_params_{polarity}.{lcms_processing_extension}",
             )
+            os.makedirs(os.path.dirname(destination_path_lcms_method_filename), exist_ok=True)
+            os.makedirs(os.path.dirname(destination_path_lcms_processing_filename), exist_ok=True)
+            os.makedirs(sub_folder, exist_ok=True)
             shutil.copyfile(
                 path_lcms_method_filename, destination_path_lcms_method_filename
             )
@@ -138,7 +142,7 @@ def organize_folder(
                 )
                 shutil.copy(
                     (sub_folder + "/" + f"{sample_id}_features_ms2_{polarity}.mgf"),
-                    os.path.join("..", target_path, f"for_massive_upload_{polarity}"),
+                    os.path.join(target_path, f"for_massive_upload_{polarity}"),
                 )
 
 

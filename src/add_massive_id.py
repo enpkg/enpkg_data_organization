@@ -1,4 +1,4 @@
-""" Argument parser """
+"""Argument parser """
 import argparse
 import os
 import re
