@@ -1,5 +1,7 @@
 """Utilities for the unit tests."""
 from downloaders import BaseDownloader
+from glob import glob
+from downloaders.extractors import AutoExtractor
 
 
 def retrieve_zenodo_data():
@@ -10,3 +12,6 @@ def retrieve_zenodo_data():
         "tests/data/dbgkg_tropical_toydataset",
     )
     # ALSO EXTRACT ALL OF THE THINGS!
+    extractor = AutoExtractor()
+    paths = glob("tests/data/**/*.gz", recursive=True)
+    extractor.extract(paths)
