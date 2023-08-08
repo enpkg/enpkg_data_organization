@@ -10,7 +10,7 @@ def retrieve_zenodo_data():
     downloader = BaseDownloader()
     downloader.download(
         "https://zenodo.org/record/8152039/files/dbgkg_tropical_toydataset.tar.gz?download=1",
-        "tests/data/dbgkg_tropical_toydataset.gz",
+        "tests/data/dbgkg_tropical_toydataset.tar.gz",
     )
     # ALSO EXTRACT ALL OF THE THINGS!
     extractor = AutoExtractor()
