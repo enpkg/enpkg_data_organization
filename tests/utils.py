@@ -1,6 +1,7 @@
 """Utilities for the unit tests."""
-from downloaders import BaseDownloader
 from glob import glob
+
+from downloaders import BaseDownloader
 from downloaders.extractors import AutoExtractor
 
 
@@ -9,7 +10,7 @@ def retrieve_zenodo_data():
     downloader = BaseDownloader()
     downloader.download(
         "https://zenodo.org/record/8152039/files/dbgkg_tropical_toydataset.tar.gz?download=1",
-        "tests/data/dbgkg_tropical_toydataset",
+        "tests/data/dbgkg_tropical_toydataset.gz",
     )
     # ALSO EXTRACT ALL OF THE THINGS!
     extractor = AutoExtractor()
