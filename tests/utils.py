@@ -13,6 +13,6 @@ def retrieve_zenodo_data():
         "tests/data/dbgkg_tropical_toydataset.tar.gz",
     )
     # ALSO EXTRACT ALL OF THE THINGS!
-    extractor = AutoExtractor()
+    extractor = AutoExtractor(delete_original_after_extraction=True)
     paths = glob("tests/data/**/*.gz", recursive=True)
     extractor.extract(paths)
